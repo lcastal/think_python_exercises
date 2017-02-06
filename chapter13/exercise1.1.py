@@ -94,3 +94,7 @@ def build_histogram_text(path_source, path_result):
 
 if __name__ == "__main__":
     build_histogram_text("pride_and_prejudice.txt", "histogram_pride_and_prejudice.txt")
+    build_histogram_text("adventures_huckleberry_finn.txt", "histogram_adventures_huckleberry_finn.txt")
+    build_histogram_text("alice_adventures.txt", "histogram_alice_adventures.txt")
+    build_histogram_text("metamorphosis.txt", "histogram_metamorphosis.txt")
+
