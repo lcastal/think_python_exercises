@@ -71,14 +71,26 @@ def make_dict_frequency(l):
     return d
 
 
-if __name__ == "__main__":
-    l = file_to_list("pride_and_prejudice.txt")
+def build_histogram_text(path_source, path_result):
+    """
+    Take a file text and write a file path_result with the counting of all words
+    :param path_source: source text
+    :param path_result: result text
+    :return:
+    """
+    l = file_to_list(path_source)
 
     total_number_words = len(l)
     d = make_dict_frequency(l)
+    #build a list sorted
+    l = sorted(d.items(), key=lambda x: x[1], reverse=True)
 
-    fd = open("result.txt", "w")
+    fd = open(path_result, "w")
 
     fd.writelines("Total words: "+str(total_number_words)+"\n")
-    for key, value in d.items():
+    for key, value in l:
         fd.write("word: "+key+" frequency: "+str(value)+"\n")
+
+
+if __name__ == "__main__":
+    build_histogram_text("pride_and_prejudice.txt", "histogram_pride_and_prejudice.txt")
