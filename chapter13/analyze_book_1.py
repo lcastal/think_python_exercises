@@ -1,4 +1,5 @@
 from __future__ import print_function, division
+
 import string, random
 
 
@@ -66,18 +67,37 @@ def different_words(histogram):
     return len(histogram)
 
 
+def subtract(dict1, dict2):
+    """
+    Create a dictionary that contains all words in dict1 non present in dict2
+    :param dict1: dictionary
+    :param dict2: dictionary
+    :return: dictionary
+    """
+    result = dict()
+    for key in dict1:
+        if key not in dict2:
+            result[key] = None
+
+    return result
+
+
 def main():
-    biblioteque = ["pride_and_prejudice.txt",
-                 "adventures_huckleberry_finn.txt",
-                 "alice_adventures.txt",
-                 "metamorphosis.txt"]
 
-    for book in biblioteque:
-        histogram = process_file(book)
-        sum_words = total_words(histogram)
-        print("Total number words: %d" %(sum_words))
-        print_most_common(histogram, 5)
+    bib = ["pride_and_prejudice.txt",
+           "metamorphosis.txt"]
 
+    histogram_book = process_file(bib[1])
+    sum_words = total_words(histogram_book)
+    print("Total number words: %d" % sum_words)
+    print_most_common(histogram_book, 5)
+
+    histogram_word = process_file("words.txt")
+
+    diff = subtract(histogram_book, histogram_word)
+
+    for key in diff.keys():
+        print(key, end=" ")
 
 if __name__ == "__main__":
     main()
