@@ -88,6 +88,7 @@ def main():
            "metamorphosis.txt"]
 
     histogram_book = process_file(bib[1])
+    print(histogram_book, sep="\n")
     sum_words = total_words(histogram_book)
     print("Total number words: %d" % sum_words)
     print_most_common(histogram_book, 5)
